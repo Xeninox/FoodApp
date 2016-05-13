@@ -1,6 +1,45 @@
-<h1>Login</h1>
-<%= form_tag '/login' do %>
-Email <%= text_field_tag :email %>
-Password <%= password_field_tag :password %>
-<%= submit_tag "Log In"%>
-<% end %>
+<div class="row">
+	<div class="col-md-12">
+		<h4 class="page-head-line">Please Login To Enter </h4>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h4>Login with <strong>Calyx Account  :</strong></h4>
+		<br />
+		<%= form_tag '/login' do %>
+		<label>Enter Email ID : </label>
+		<%= text_field_tag :email, params[:email], class: 'form-control' %>
+		<label>Enter Password :  </label>
+		<%= password_field_tag :password, params[:password], class: 'form-control' %>
+		<hr />
+		<%= submit_tag "Log In", class: 'btn btn-primary btn-block' %><br />
+		<% end %>
+	</div>
+	<div class="col-md-6">
+		<div class="alert alert-info">
+			This app helps you to notify the student body which food is Available, Still Cooking or Not Available.
+			<br />
+			<strong> It was developed by :</strong>
+			<ul>
+				<li>
+					Calyx Services, Ashesi
+				</li>
+			</ul>
+
+		</div>
+		<div class="alert alert-success">
+			<strong> We hope ypu find this app useful:</strong>
+			<ul>
+				<li>
+					Thanks for using the app, from the Calyx team
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
+
+

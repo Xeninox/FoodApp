@@ -1,14 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FoodApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>FoodApp</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<div class="container">
+			<div class="row">
+				<% if !current_user %>
+				<div class="col-md-12">
+					<strong>Email: </strong>calyx@gmail.com
+					&nbsp;&nbsp;
+					<strong>Support: </strong>0241352320
+				</div>
+				<% else %>
+				<div class="col-md-12">
+					<strong>Name: </strong><%= current_user.name %>
+					&nbsp;&nbsp;
+					<strong>Calyx Support: </strong>0241352320
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</header>
 
-<%= yield %>
+	<section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                        <% if current_user %>
+                            <li><%= link_to "Dashboard", products_path %></li>
+                            <li><%= link_to "New Product", new_product_path %></li>
+                             <li><%= link_to "Logout", '/logout', method: "delete" %></li>
+                             <% else %>
+                             <li><%= link_to "Sign Up", new_user_path %></li>
+                             <li><%= link_to "Login", root_path %></li>
+                             <% end %>
+                        </ul>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </section>
+
+	<div class="content-wrapper">
+		<div class="container">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

@@ -4,19 +4,23 @@ FoodApp::Application.routes.draw do
 
 	scope '/api' do
 		scope '/v1' do
-			scope '/:id' do
-				get '/' => 'foodapi#index'
+			scope '/getfoods' do
+				scope '/:id' do
+					get '/' => 'foodapi#index'
+				end
 			end
 		end
 	end
 
-	root 'sessions#new'
+		root 'sessions#new'
 
-	get '/login' => 'sessions#new'
-	post '/login' => 'sessions#create'
-	get '/logout' => 'sessions#destroy'
+		controller :sessions do
+			get 'login' => :new
+			post 'login' => :create
+			delete 'logout' => :destroy
+		end
 
 
-	get '/signup' => 'users#new'
-	post 'users' => 'users#create'
-end
+		get '/signup' => 'users#new'
+		post '/users' => 'users#create'
+	end

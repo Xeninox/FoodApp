@@ -9,9 +9,11 @@ class SessionsController < ApplicationController
 
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
+			flash[:success] = "Welcome, #{user.name.upcase}"
 			redirect_to products_url
 		else
-			redirect_to '/login'
+			flash.now[:danger] = 'Invalid email and password combination!'
+			render 'new'
 		end
 	end
 

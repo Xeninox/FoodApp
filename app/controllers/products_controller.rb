@@ -3,13 +3,12 @@ class ProductsController < ApplicationController
   before_filter :authorize
 
   def index
-    @products = Product.all
+    @products = Product.order(:name)
   end
 
   def show
   end
 
-  # GET /products/new
   def new
     @product = current_user.products.build
   end
@@ -17,44 +16,32 @@ class ProductsController < ApplicationController
   def edit
   end
 
-  # POST /products
-  # POST /products.json
   def create
     @product = current_user.products.build(product_params)
 
-    respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        flash[:success] = "Product was successfully created"
+        redirect_to products_url
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        flash[:success] = "Product successfully updated"
+      redirect_to products_url
       else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        render 'edit'
       end
-    end
   end
 
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Product deleted successfully"
+    redirect_to products_url
   end
 
   private

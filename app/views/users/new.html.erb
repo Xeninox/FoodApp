@@ -1,9 +1,47 @@
-<h1>Sign Up</h1>
+<div class="row">
+	<div class="col-md-12">
+		<h4 class="page-head-line">Register With Us</h4>
+	</div>
+</div>
 
-<%= form_for :user, url: '/users' do |f| %>
-Name: <%= f.text_field :name %>
-Email: <%= f.text_field :email %>
-Password: <%= f.text_field :password %>
-Password Confirmation: <%= f.text_field :password_confirmation %>
-<%= f.submit 'Submit' %>
-<% end %>
+<div class="row">
+	<div class="col-md-6">
+		<h4>Login with <strong>Calyx Account  :</strong></h4>
+		<br />
+		<%= form_for :user, url: '/users' do |f| %>
+		<label>Name : </label>
+		<%= f.text_field :name, class: 'form-control' %>
+		<label>E-mail : </label>
+		<%= f.text_field :email, class: 'form-control'  %>
+		<label>Password : </label>
+		<%= f.password_field :password, class: 'form-control'  %>
+		<label>Confirm Password : </label>
+		<%= f.password_field :password_confirmation, class: 'form-control'  %>
+		<hr />
+		<%= f.submit 'Create Account', class: 'btn btn-primary btn-block' %><br />
+		<% end %>
+	</div>
+	<div class="col-md-6">
+		<div class="alert alert-info">
+			This app helps you to notify the student body which food is Available, Still Cooking or Not Available.
+			<br />
+			<strong> It was developed by :</strong>
+			<ul>
+				<li>
+					Calyx Services, Ashesi
+				</li>
+			</ul>
+
+		</div>
+		<div class="alert alert-success">
+			<strong> We hope ypu find this app useful:</strong>
+			<ul>
+				<li>
+					Thanks for using the app, from the Calyx team
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
