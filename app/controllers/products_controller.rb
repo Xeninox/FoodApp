@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_filter :authorize
 
   def index
-    @products = Product.order(:name)
+    @products = Product.order(:name).where('user_id = ?', current_user.id)
   end
 
   def show
