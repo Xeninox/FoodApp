@@ -19,21 +19,21 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
 
-      if @product.save
-        flash[:success] = "Product was successfully created"
-        redirect_to products_url
-      else
-        render 'new'
-      end
+    if @product.save
+      flash[:success] = "Product was successfully created"
+      redirect_to products_url
+    else
+      render 'new'
+    end
   end
 
   def update
-      if @product.update(product_params)
-        flash[:success] = "Product successfully updated"
+    if @product.update(product_params)
+      flash[:success] = "Product successfully updated"
       redirect_to products_url
-      else
-        render 'edit'
-      end
+    else
+      render 'edit'
+    end
   end
 
   # DELETE /products/1
@@ -54,4 +54,4 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :state, :user_id)
     end
-end
+  end
