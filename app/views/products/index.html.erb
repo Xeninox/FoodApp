@@ -23,19 +23,48 @@
             <tr>
               <th>#</th>
               <th>Name of Food</th>
+              <th></th>
               <th>Current Status</th>
-              <th>Cafeteria Name</th>
-              <th>Perform Actions</th>
+              <th>Update Status</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
            <% @products.each do |product| %>
            <tr class="success">
             <td><%= counter %></td>
-            <td><%= product.name.capitalize %></td>
-            <td><%= product.state.capitalize %></td>
-            <td><%= product.user.name.capitalize %></td>
-            <td><%= link_to 'Edit', edit_product_path(product) %> | <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to product.name.upcase, edit_product_path(product) %></td>
+            <td><%= link_to( content_tag(:i, nil, class: 'fa fa-trash-o'), product, method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+            <td><%= product.state.upcase %></td>
+            <td>
+              <%= form_for product do |t| %>
+              <%= t.hidden_field :name, :value => product.name %>
+              <%= t.hidden_field :state, :value => "Available" %>
+              <%= t.hidden_field :spicy, :value => product.spicy %>
+              <%= t.hidden_field :ingredients, :value => product.ingredients %>
+              <%= t.submit'Available', class: 'btn btn-info' %>
+              <% end %>
+</td>
+<td>
+              <%= form_for product do |t| %>
+              <%= t.hidden_field :name, :value => product.name %>
+              <%= t.hidden_field :state, :value => "Still Cooking" %>
+              <%= t.hidden_field :spicy, :value => product.spicy %>
+              <%= t.hidden_field :ingredients, :value => product.ingredients %>
+              <%= t.submit'Still Cooking', class: 'btn btn-success' %>
+              <% end %>
+</td>
+<td>
+              <%= form_for product do |t| %>
+              <%= t.hidden_field :name, :value => product.name %>
+              <%= t.hidden_field :state, :value => "Not Available" %>
+              <%= t.hidden_field :spicy, :value => product.spicy %>
+              <%= t.hidden_field :ingredients, :value => product.ingredients %>
+              <%= t.submit'Not Available', class: 'btn btn-danger' %>
+              <% end %>
+
+            </td>
           </tr>
           <% counter += 1 %>
           <% end %>
