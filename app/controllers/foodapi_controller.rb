@@ -13,7 +13,7 @@ class FoodapiController < ApplicationController
 	end
 
 	def getavailablefoods
-		render json: Product.where('(user_id = ? AND state = ?)', params[:cafeId], "Available")
+		render json: Product.where('(user_id = ? AND state = ?)', params[:cafeId], "Available").select("id, name, state, user_id, ingredients, spicy, price")
 	end
 
 	def getCafeInfo
