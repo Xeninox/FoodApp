@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-  	redirect_to '/login' unless current_user || current_user.email == "me@gmail.com"
+  	redirect_to '/login' unless current_user || current_user.email == "calyxservices@calyx.com"
   end
 end

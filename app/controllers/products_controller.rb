@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
     end
 
     def admin
-    redirect_to(products_url) unless current_user.email == "me@gmail.com"
+    redirect_to(products_url) unless current_user.email == "calyxservices@calyx.com"
   end
 
   end

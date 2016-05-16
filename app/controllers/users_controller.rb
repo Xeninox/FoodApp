@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :destroy, :edit]
 	before_filter :authorize, except: [ :new ]
-	before_action :admin, only: [ :destroy, :show, :edit, :update]
+	before_action :admin, only: [ :destroy, :show, :edit, :update, :new]
 
 	def index
 		@users = User.all.paginate(page: params[:page],:per_page => 6)
@@ -57,6 +57,6 @@ class UsersController < ApplicationController
 	end
 
 	def admin
-		redirect_to(products_url) unless current_user.email == "me@gmail.com"
+		redirect_to(products_url) unless current_user.email == "calyxservices@calyx.com"
 	end
 end
