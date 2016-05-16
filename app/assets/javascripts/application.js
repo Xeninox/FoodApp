@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
+function duplicate() {
+    $('#spi').clone().insertAfter("#spi");
+}
 

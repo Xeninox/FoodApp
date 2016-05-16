@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-md-12">
+		<h4 class="page-head-line">Listing All Shops</h4>
+	</div>
+</div>
+
+
+<% counter = 1 %>
+<div class="row">
+  <p id="notice"><%= notice %></p>
+  <div class="col-md-12">
+   <!--    Context Classes  -->
+   <div class="panel panel-default">
+
+    <div class="panel-heading">
+      SHOWING ALL SHOPS
+    </div>
+
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Cafe Name</th>
+              <th></th>
+              <th>Enter Cafe</th>
+              <th>Cafe Email</th>
+            </tr>
+          </thead>
+          <tbody>
+           <% @users.each do |user| %>
+           <tr class="success">
+            <td><%= counter %></td>
+            <td><%= link_to user.name.upcase, edit_user_path(user) %></td>
+            <td><%= link_to( content_tag(:i, nil, class: 'fa fa-trash-o'), user, method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+            <td><%= link_to user.name.upcase, user %></td>
+            <td><%= user.email %></td>
+          </tr>
+          <% counter += 1 %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Add New User'.upcase, new_user_path %>
+      <div class="col-lg-12 col-md-4 col-sm-4 mb">
+        <%= will_paginate @users %>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  end  Context Classes  -->
+</div>
+</div>

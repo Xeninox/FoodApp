@@ -6,19 +6,23 @@
     <div class="panel panel-default">
      <div class="panel-body">
       <div class="form-group">
-        <label for="exampleInputEmail1">Name Of Food</label>
+        <label for="exampleInputEmail1">Name Of Product</label>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Current Status Of Food</label> &nbsp
+        <label for="exampleInputPassword1">Current Status Of Product</label> &nbsp
         <%= f.select :state, ['Available','Still Cooking','Not Available'] %>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Is the food spicy?</label> &nbsp
+        <label for="exampleInputPassword1">Is the product spicy?</label> &nbsp
         <%= f.select :spicy, ['true','false'] %>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Ingredients</label>
+        <label for="exampleInputPassword1">Price</label> &nbsp
+        <%= f.number_field :price, :step => 0.1, class: 'form-control' %>
+      </div>
+      <div class="form-group" id="ingre">
+        <label for="exampleInputEmail1">Ingredients / Decription of Product</label>
         <%= f.text_area :ingredients, class: 'form-control' %>
       </div>
       <div>
@@ -36,13 +40,13 @@
     <strong> The current status of a product will tell customers if :</strong>
     <ul>
       <li>
-        The food is available
+        The product is available
       </li>
       <li>
-        The food is still cooking
+        The product is still cooking
       </li>
       <li>
-        The food is not available
+        The product is not available
       </li>
     </ul>
 

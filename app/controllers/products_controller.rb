@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_filter :authorize
 
   def index
-    @products = Product.order(:name).where('user_id = ?', current_user.id)
+    @products = Product.order(:name).where('user_id = ?', current_user.id).paginate(page: params[:page],:per_page => 6)
   end
 
   def show
@@ -52,6 +52,11 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :state, :user_id, :ingredients, :spicy)
+      params.require(:product).permit(:name, :state, :user_id, :ingredients, :spicy, :price)
     end
+
+    def admin
+    redirect_to(products_url) unless current_user.email == "me@gmail.com"
+  end
+
   end

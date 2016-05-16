@@ -7,9 +7,19 @@ FoodApp::Application.routes.draw do
 			scope '/getallcafes' do
 				get '/' => 'foodapi#allcafes'
 			end
+			scope '/searchFood' do
+				scope '/:name' do
+					get '/' => 'foodapi#search'
+				end
+			end
 			scope '/:cafeId' do
-			scope '/getfoods' do
+				scope '/getfoods' do
 					get '/' => 'foodapi#getfoods'
+				end
+			end
+			scope '/getCafeInfo' do
+				scope '/:cafeId' do
+					get '/' => 'foodapi#getCafeInfo'
 				end
 			end
 			scope '/:cafeId' do
@@ -38,5 +48,6 @@ FoodApp::Application.routes.draw do
 
 
 	get '/calyxsignup' => 'users#new'
+	get '/calyxallusers' => 'users#index'
 	post '/users' => 'users#create'
 end
