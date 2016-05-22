@@ -4,34 +4,34 @@ FoodApp::Application.routes.draw do
 
 	scope '/api' do
 		scope '/v1' do
-			scope '/getallcafes' do
-				get '/' => 'foodapi#allcafes'
+			scope '/getallshops' do
+				get '/' => 'foodapi#allShops'
 			end
-			scope '/searchFood' do
+			scope '/searchProduct' do
 				scope '/:name' do
 					get '/' => 'foodapi#search'
 				end
 			end
-			scope '/:cafeId' do
-				scope '/getfoods' do
-					get '/' => 'foodapi#getfoods'
+			scope '/:shopId' do
+				scope '/getProducts' do
+					get '/' => 'foodapi#getproducts'
 				end
 			end
-			scope '/getCafeInfo' do
-				scope '/:cafeId' do
-					get '/' => 'foodapi#getCafeInfo'
+			scope '/getShopInfo' do
+				scope '/:shopId' do
+					get '/' => 'foodapi#getShopInfo'
 				end
 			end
-			scope '/:cafeId' do
-				scope '/getfood' do
+			scope '/:shopId' do
+				scope '/getProduct' do
 					scope '/:productName' do
-						get '/' => 'foodapi#getcafefood'
+						get '/' => 'foodapi#getShopProduct'
 					end
 				end
 			end
-			scope '/:cafeId' do
-				scope '/getavailablefoods' do
-					get '/' => 'foodapi#getavailablefoods'
+			scope '/:shopId' do
+				scope '/getAvailableProducts' do
+					get '/' => 'foodapi#getAvailableProducts'
 				end
 			end
 		end

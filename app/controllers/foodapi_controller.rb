@@ -1,26 +1,26 @@
 class FoodapiController < ApplicationController
 
-	def getfoods
-		render json: Product.where('user_id = ?', params[:cafeId]).select("id, name, state, user_id, ingredients, spicy, price")
+	def getproducts
+		render json: {status: 200, products: Product.where('user_id = ?', params[:shopId]).select("id, name, state, user_id, ingredients, spicy, price") }
 	end
 
-	def allcafes
-		render json: User.select("id, name, email").all
+	def allShops
+		render json: { status: 200, shops: User.select("id, name, email").all }
 	end
 
-	def getcafefood
-		render json: Product.where('(user_id = ? AND name = ?)', params[:cafeId], params[:productName]).select("id, name, state, user_id, ingredients, spicy, price")
+	def getShopProduct
+		render json: {status: 200, product: Product.where('(user_id = ? AND name = ?)', params[:shopId], params[:productName]).select("id, name, state, user_id, ingredients, spicy, price")}
 	end
 
-	def getavailablefoods
-		render json: Product.where('(user_id = ? AND state = ?)', params[:cafeId], "Available").select("id, name, state, user_id, ingredients, spicy, price")
+	def getAvailableProducts
+		render json: {status: 200, available_products: Product.where('(user_id = ? AND state = ?)', params[:shopId], "Available").select("id, name, state, user_id, ingredients, spicy, price")}
 	end
 
-	def getCafeInfo
-		render json: User.where('id = ?', params[:cafeId]).select("id, name, email")
+	def getShopInfo
+		render json: {status: 200, shop: User.where('id = ?', params[:shopId]).select("id, name, email")}
 	end
 
 	def search
-		render json: Product.where('name = ?', params[:name]).select("id, name, state, user_id, ingredients, spicy, price")
+		render json: {status: 200, product: Product.where('name = ?', params[:name]).select("id, name, state, user_id, ingredients, spicy, price")}
 	end
 end
