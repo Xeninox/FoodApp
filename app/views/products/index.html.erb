@@ -22,6 +22,7 @@
           <thead>
             <tr>
               <th>#</th>
+              <th>Image</th>
               <th>Name of Product</th>
               <th>Price of Product (GHC)</th>
               <th>Current Status</th>
@@ -35,6 +36,7 @@
            <% @products.each do |product| %>
            <tr class="success">
             <td><%= counter %></td>
+            <td><% unless product.avatar_url.nil? %><%= image_tag product.avatar_url(:thumbnail) %><br /><% end %></td>
             <td><%= link_to product.name.upcase, edit_product_path(product) %></td>
             <td><%= product.price %></td>
             <td><%= product.state.upcase %></td>

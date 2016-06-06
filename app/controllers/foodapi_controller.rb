@@ -1,7 +1,7 @@
 class FoodapiController < ApplicationController
 
 	def getproducts
-		render json: {status: 200, products: Product.where('user_id = ?', params[:shopId]).select("id, name, state, user_id, ingredients, spicy, price") }
+		render json: {status: 200, products: Product.where('user_id = ?', params[:shopId]).select("id, name, state, user_id, ingredients, spicy, price, avatar") }
 	end
 
 	def allShops
@@ -9,11 +9,11 @@ class FoodapiController < ApplicationController
 	end
 
 	def getShopProduct
-		render json: {status: 200, product: Product.where('(user_id = ? AND name = ?)', params[:shopId], params[:productName]).select("id, name, state, user_id, ingredients, spicy, price")}
+		render json: {status: 200, product: Product.where('(user_id = ? AND name = ?)', params[:shopId], params[:productName]).select("id, name, state, user_id, ingredients, spicy, price, avatar")}
 	end
 
 	def getAvailableProducts
-		render json: {status: 200, available_products: Product.where('(user_id = ? AND state = ?)', params[:shopId], "Available").select("id, name, state, user_id, ingredients, spicy, price")}
+		render json: {status: 200, available_products: Product.where('(user_id = ? AND state = ?)', params[:shopId], "Available").select("id, name, state, user_id, ingredients, spicy, price, avatar")}
 	end
 
 	def getShopInfo
@@ -21,6 +21,6 @@ class FoodapiController < ApplicationController
 	end
 
 	def search
-		render json: {status: 200, product: Product.where('name = ?', params[:name]).select("id, name, state, user_id, ingredients, spicy, price")}
+		render json: {status: 200, product: Product.where('name = ?', params[:name]).select("id, name, state, user_id, ingredients, spicy, price, avatar")}
 	end
 end

@@ -1,0 +1,10 @@
+# config/cloudinary.yml
+development:
+  cloud_name: "xeninox"
+  api_key: "843185139239681"
+  api_secret: "T_Kz-Mc5czHhWPIxcLf90QQHt7Y"
+
+production:
+  cloud_name: "xeninox"
+  api_key: "843185139239681"
+  api_secret: "T_Kz-Mc5czHhWPIxcLf90QQHt7Y"

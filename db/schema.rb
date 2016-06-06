@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518141251) do
+ActiveRecord::Schema.define(version: 20160601175550) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160518141251) do
     t.text     "ingredients"
     t.boolean  "spicy"
     t.decimal  "price"
+    t.string   "avatar"
   end
 
   create_table "users", force: :cascade do |t|
